@@ -3,6 +3,7 @@ module Reflex.Samosbor.Runner.Style(
 ) where
 
 import Clay
+import qualified Clay.Flexbox as F
 
 runnerCss :: Css
 runnerCss = do
@@ -12,3 +13,9 @@ runnerCss = do
     ".small-field" ? do
         minHeight $ px 30
         minWidth $ px 300
+    "row" ? do
+        display flex
+        flexFlow row F.wrap
+    "column" ? do
+        display flex
+        flexFlow column F.nowrap

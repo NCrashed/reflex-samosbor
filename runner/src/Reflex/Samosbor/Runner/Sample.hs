@@ -7,4 +7,5 @@ import Data.Default
 import Control.Lens
 
 guiSample :: Samosbor
-guiSample = TextField $ def & textFieldConfig_classes .~ ["small-field"]
+guiSample = Container AlignHorizonal [field, field]
+    where field = TextField $ def & textFieldConfig_classes .~ ["small-field"]

@@ -10,6 +10,7 @@ import Control.Monad (void)
 import Data.Text (Text)
 import Control.Lens
 import Data.Map (Map)
+import Data.Foldable (traverse_)
 
 import Reflex.Samosbor.Types
 
@@ -24,6 +25,11 @@ buildSamosbor ui = case ui of
             , optAttr "id" (cfg ^. textFieldConfig_id)
             ]
       void $ inputElement $ def @(InputElementConfig _ t (DomBuilderSpace m)) & inputElementConfig_elementConfig .~ ecfg
+    Container dir uis -> do
+      let clazz = case dir of
+            AlignHorizonal -> "row"
+            AlignVertical -> "column"
+      elClass "div" clazz $ traverse_ buildSamosbor uis
 
 concatAttrs :: Ord k => [Map k v] -> Map k v
 concatAttrs = foldl M.union M.empty

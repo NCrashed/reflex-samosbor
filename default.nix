@@ -11,4 +11,7 @@ in reflex-platform.project ({ pkgs, ... }: {
             "reflex-samosbor-runner"
         ];
     };
+    overrides = self: super: {
+        clay = self.callPackage ./nix/deps/clay.nix {};
+    };
 })

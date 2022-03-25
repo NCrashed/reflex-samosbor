@@ -4,7 +4,11 @@ import Data.Default
 import Data.Text (Text)
 import Control.Lens
 
-data Samosbor = TextField TextFieldConfig
+data AlignDir = AlignVertical | AlignHorizonal
+
+data Samosbor =
+      TextField TextFieldConfig
+    | Container !AlignDir [Samosbor]
 
 data TextFieldConfig = TextFieldConfig {
   _textFieldConfig_classes :: [Text]
@@ -18,3 +22,4 @@ instance Default TextFieldConfig where
   }
 
 makeLenses ''TextFieldConfig
+

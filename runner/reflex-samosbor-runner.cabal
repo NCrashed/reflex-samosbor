@@ -24,7 +24,7 @@ library
   build-depends:
       base                 >= 4.7
     , bytestring
-    , clay
+    , clay                 >= 0.14
     , containers           >= 0.5
     , data-default
     , jsaddle
