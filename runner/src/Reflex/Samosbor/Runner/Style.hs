@@ -13,9 +13,9 @@ runnerCss = do
     ".small-field" ? do
         minHeight $ px 30
         minWidth $ px 300
-    "row" ? do
+    ".row" ? do
         display flex
         flexFlow row F.wrap
-    "column" ? do
+    ".column" ? do
         display flex
         flexFlow column F.nowrap
