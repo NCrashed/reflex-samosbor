@@ -2,11 +2,13 @@ let
    reflex-platform = (import ./nix/reflex-platform.nix) {};
 in reflex-platform.project ({ pkgs, ... }: {
     packages = {
-        samosbor-runner = ./runner;
+        reflex-samosbor = ./library;
+        reflex-samosbor-runner = ./runner;
     };
     shells = {
         ghc = [
-            "samosbor-runner"
+            "reflex-samosbor"
+            "reflex-samosbor-runner"
         ];
     };
 })

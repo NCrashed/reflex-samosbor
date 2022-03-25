@@ -1,7 +1,7 @@
-name:                reflex-samosbor-runner
+name:                reflex-samosbor
 version:             0.1.0.0
 synopsis:            Reflex GUI editor for self running
-description:         Desktop application that runs reflex-samosbor GUI DSL
+description:         Core library that can generate UI that can run itself
 Stability:           Experimental
 category:            Reflex, FRP, Web, GUI, HTML, Javascript, Reactive, Reactivity, User Interfaces, User-interface
 build-type:          Simple
@@ -18,22 +18,19 @@ extra-source-files:
 library
   hs-source-dirs:      src
   exposed-modules:
-    Reflex.Samosbor.Runner
-    Reflex.Samosbor.Runner.Style
-    Reflex.Samosbor.Runner.Sample
+    Reflex.Samosbor
+    Reflex.Samosbor.Types
   build-depends:
       base                 >= 4.7
     , bytestring
-    , clay
     , containers           >= 0.5
     , data-default
     , jsaddle
-    , lens
+    , lens                 >= 4
     , mtl                  >= 2.1
     , ref-tf
     , reflex
     , reflex-dom
-    , reflex-samosbor
     , text
     , unliftio-core        >= 0.1
   default-language:    Haskell2010
@@ -44,23 +41,12 @@ library
     GeneralizedNewtypeDeriving
     LambdaCase
     MultiParamTypeClasses
+    OverloadedLists
     OverloadedStrings
     RankNTypes
     ScopedTypeVariables
     StandaloneDeriving
+    TemplateHaskell
+    TypeApplications
     TypeFamilies
     UndecidableInstances
-
-executable samosbor
-  hs-source-dirs: app
-  main-is: Main.hs
-  ghc-options: -O3 -threaded -rtsopts "-with-rtsopts=-N -qm"
-  build-depends:
-      base
-    , reflex-samosbor-runner -any
-  default-language:    Haskell2010
-
-source-repository head
-  type: git
-  location: https://github.com/ncrashed/samosbor
-  subdir: retractable
