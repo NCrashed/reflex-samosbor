@@ -1,0 +1,60 @@
+name:                reflex-samosbor-runner
+version:             0.1.0.0
+synopsis:            Reflex GUI editor for self running
+description:         Desktop application that runs reflex-samosbor GUI DSL
+Stability:           Experimental
+category:            Reflex, FRP, Web, GUI, HTML, Javascript, Reactive, Reactivity, User Interfaces, User-interface
+build-type:          Simple
+cabal-version:       >=1.10
+license:             MIT
+license-file:        LICENSE
+copyright:           2022 Anton Gushcha
+author:              Anton Gushcha
+maintainer:          Anton Gushcha <ncrashed@protonmail.com>
+extra-source-files:
+  README.md
+  CHANGELOG.md
+
+library
+  hs-source-dirs:      src
+  exposed-modules:
+    Reflex.Samosbor.Runner
+  build-depends:
+      base                 >= 4.7
+    , bytestring
+    , clay
+    , containers           >= 0.5
+    , jsaddle
+    , mtl                  >= 2.1
+    , ref-tf
+    , reflex
+    , reflex-dom
+    , text
+    , unliftio-core        >= 0.1
+  default-language:    Haskell2010
+  default-extensions:
+    DataKinds
+    DeriveGeneric
+    FlexibleInstances
+    GeneralizedNewtypeDeriving
+    LambdaCase
+    MultiParamTypeClasses
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TypeFamilies
+    UndecidableInstances
+
+executable samosbor
+  hs-source-dirs: app
+  main-is: Main.hs
+  ghc-options: -O3 -threaded -rtsopts "-with-rtsopts=-N -qm"
+  build-depends:
+      base
+    , reflex-samosbor-runner -any
+  default-language:    Haskell2010
+
+source-repository head
+  type: git
+  location: https://github.com/ncrashed/samosbor
+  subdir: retractable
